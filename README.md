@@ -3,7 +3,6 @@
 ![Python](https://img.shields.io/badge/Python-3.8%2B-blue?logo=python&logoColor=white)
 ![TensorFlow](https://img.shields.io/badge/TensorFlow-2.x-orange?logo=tensorflow&logoColor=white)
 ![Flask](https://img.shields.io/badge/Flask-API-green?logo=flask&logoColor=white)
-![License](https://img.shields.io/badge/License-MIT-yellow)
 
 This repository contains the **image classification model** for the **R2R mobile app**.  
 It is trained on **180 classes of items** (tools, equipment, and products) and is integrated into the R2R ecosystem.
@@ -36,7 +35,6 @@ r2r-model/
 ├── requirements.txt             # Python dependencies
 ├── classes.md                   # Complete class documentation
 ├── README.md                    # Project documentation
-├── LICENSE                      # MIT License
 ├── .gitattributes               # Git attributes
 └── .gitignore                   # Git ignore rules
 ```
