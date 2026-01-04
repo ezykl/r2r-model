@@ -10,7 +10,15 @@ app = Flask(__name__)
 
 # Load the model
 MODEL_PATH = os.path.join(os.path.dirname(__file__), "model/r2r_model.keras")
-model = tf.keras.models.load_model(MODEL_PATH)
+model = None
+
+def get_model():
+    global model
+    if model is None:
+        model = tf.keras.models.load_model(MODEL_PATH)
+    return model
+
+
 
 # Define supported image formats
 ALLOWED_EXTENSIONS = {"jpeg", "jpg", "png", "gif"}
@@ -111,7 +119,8 @@ def predict():
         img_array = np.expand_dims(img_array, axis=0)
 
         # Make prediction
-        prediction = model.predict(img_array)[0]
+        model = get_model()
+prediction = model.predict(img_array)[0]
         top_3_indices = np.argsort(prediction)[-3:][::-1]  # Top 3 predictions
         highest_confidence = max(prediction)
 
@@ -156,4 +165,5 @@ def predict():
 # Activate environment and install dependencies using the command: .\env\Scripts\activate
 # Start the Flask server using the command: python app.py
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000, debug=True)
+        port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)app.run(host="0.0.0.0", port=5000)
